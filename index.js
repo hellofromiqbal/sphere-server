@@ -12,7 +12,7 @@ dotenv.config();
 // USE ENVIRONMENT VARIABLES
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
-// const CLIENT_DOMAIN = process.env.CLIENT_DOMAIN;
+const CLIENT_DOMAIN = process.env.CLIENT_DOMAIN;
 
 // INVOKE APP
 const app = express();
