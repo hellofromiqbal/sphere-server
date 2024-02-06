@@ -12,6 +12,7 @@ dotenv.config();
 // USE ENVIRONMENT VARIABLES
 const PORT = process.env.PORT;
 const MONGO_URI = process.env.MONGO_URI;
+const CLIENT_DOMAIN = process.env.CLIENT_DOMAIN;
 
 // INVOKE APP
 const app = express();
@@ -19,14 +20,14 @@ const app = express();
 // MIDDLEWARE
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
-  credentials: true,
-  // origin: 'http://localhost:5173'
-}));
 // app.use(cors({
 //   credentials: true,
-//   origin: 'http://localhost:5173'
+//   // origin: 'http://localhost:5173'
 // }));
+app.use(cors({
+  credentials: true,
+  origin: CLIENT_DOMAIN
+}));
 
 app.get('/', (request, response) => {
   return response.send('App is listening..')
