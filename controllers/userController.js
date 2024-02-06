@@ -64,7 +64,7 @@ export const signIn = async (request, response) => {
       fullname: isUserExist.fullname
     };
     const userSignInToken = jwt.sign(tokenPayload, SECRET_TOKEN, { expiresIn: '7d' });
-    response.cookie('sphere', userSignInToken, { httpOnly: true, path: '/' });
+    response.cookie('sphere', userSignInToken, { httpOnly: false, path: '/' });
 
     return response.json({
       message: 'Signed in successfully.',
