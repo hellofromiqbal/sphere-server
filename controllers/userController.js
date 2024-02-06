@@ -3,6 +3,11 @@ import { Article } from '../models/articleModel.js';
 import { hasSpecialCharacters } from '../helper/specialCharDetector.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const SECRET_TOKEN = process.env.SECRET_TOKEN;
 
 export const signUp = async (request, response) => {
   try {
@@ -58,7 +63,7 @@ export const signIn = async (request, response) => {
       email: isUserExist.email,
       fullname: isUserExist.fullname
     };
-    const userSignInToken = jwt.sign(tokenPayload, process.env.SECRET_TOKEN, { expiresIn: '7d' });
+    const userSignInToken = jwt.sign(tokenPayload, SECRET_TOKEN, { expiresIn: '7d' });
     response.cookie('sphere', userSignInToken, { httpOnly: true, path: '/' });
 
     return response.json({
