@@ -26,7 +26,7 @@ app.use(cookieParser());
 // }));
 app.use(cors({
   credentials: true,
-  // origin: CLIENT_DOMAIN
+  origin: CLIENT_DOMAIN
 }));
 
 app.get('/', (request, response) => {
