@@ -96,7 +96,7 @@ export const readCurrentUser = async (request, response) => {
       });
     };
 
-    const decodedToken = jwt.verify(sphere, process.env.SECRET_TOKEN);
+    const decodedToken = jwt.verify(sphere, SECRET_TOKEN);
 
     const currentUser = await User.findById(decodedToken.userId).populate({
       path: 'following',
